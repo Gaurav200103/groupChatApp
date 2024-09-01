@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { loginUser, singUpUser } from '../../storage/authSlice';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
-
+  const state = useSelector(state => state.authReducer);
+  const navigate = useNavigate();
+  if(state.login == true){
+    navigate("/chat")
+  }
   const handleForm = ()=>{
     event.preventDefault();
 
